@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yakup Balakçı - Premium E-Bike Satış</title>
+    <style>
+        /* Genel Stiller */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Stilleri */
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo span {
+            color: #e74c3c;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #e74c3c;
+        }
+        
+        /* Hero Bölümü */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1485965120184-e220f721d03e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #e74c3c;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .btn:hover {
+            background-color: #c0392b;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Öne Çıkan Ürünler */
+        .featured {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: #2c3e50;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            background-color: #e74c3c;
+            bottom: 0;
+            left: 25%;
+        }
+        
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .product-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .product-img {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .product-card:hover .product-img img {
+            transform: scale(1.1);
+        }
+        
+        .product-info {
+            padding: 20px;
+        }
+        
+        .product-info h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .product-info p {
+            color: #7f8c8d;
+            margin-bottom: 15px;
+        }
+        
+        .product-price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .price {
+            font-size: 22px;
+            font-weight: bold;
+            color: #e74c3c;
+        }
+        
+        /* Özellikler Bölümü */
+        .features {
+            padding: 80px 0;
+            background-color: #ecf0f1;
+        }
+        
+        .features-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-box {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .feature-box:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            font-size: 50px;
+            color: #e74c3c;
+            margin-bottom: 20px;
+        }
+        
+        .feature-box h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 80px 0;
+        }
+        
+        .testimonial-container {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            gap: 30px;
+            padding: 20px 0;
+        }
+        
+        .testimonial-card {
+            min-width: 350px;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            scroll-snap-align: start;
+        }
+        
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+        }
+        
+        .testimonial-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .testimonial-user h4 {
+            font-size: 18px;
+            color: #2c3e50;
+        }
+        
+        .testimonial-user p {
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            color: #34495e;
+        }
+        
+        /* İletişim */
+        .contact {
+            padding: 80px 0;
+            background-color: #2c3e50;
+            color: white;
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+        }
+        
+        .contact-info h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .contact-info h3::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background-color: #e74c3c;
+            bottom: 0;
+            left: 0;
+        }
+        
+        .contact-info p {
+            margin-bottom: 15px;
+        }
+        
+        .contact-info a {
+            color: #e74c3c;
+            text-decoration: none;
+        }
+        
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #34495e;
+            color: white;
+        }
+        
+        .contact-form textarea {
+            height: 150px;
+            resize: none;
+        }
+        
+        .contact-form input::placeholder,
+        .contact-form textarea::placeholder {
+            color: #bdc3c7;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #1a252f;
+            color: #bdc3c7;
+            padding: 50px 0 20px;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .social-links {
+            display: flex;
+            margin-bottom: 30px;
+        }
+        
+        .social-link {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #2c3e50;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 10px;
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+            transition: all 0.3s;
+        }
+        
+        .social-link:hover {
+            background-color: #e74c3c;
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            margin-top: 20px;
+            font-size: 14px;
+        }
+        
+        /* Responsive Tasarım */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+            }
+            
+            nav ul li {
+                margin-left: 15px;
+                margin-right: 15px;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .section-title h2 {
+                font-size: 30px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+            }
+            
+            .hero h1 {
+                font-size: 28px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                E<span>Bike</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#anasayfa">Anasayfa</a></li>
+                    <li><a href="#urunler">Ürünler</a></li>
+                    <li><a href="#ozellikler">Özellikler</a></li>
+                    <li><a href="#yorumlar">Yorumlar</a></li>
+                    <li><a href="#iletisim">İletişim</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="anasayfa">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Premium Elektrikli Bisikletler</h1>
+                <p>Şehir içi ulaşımınızı yeniden tanımlayın. Yüksek performanslı e-bike'larımızla konforlu ve çevreci bir sürüş deneyimi yaşayın.</p>
+                <a href="#urunler" class="btn">Ürünleri Keşfet</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Öne Çıkan Ürünler -->
+    <section class="featured" id="urunler">
+        <div class="container">
+            <div class="section-title">
+                <h2>Öne Çıkan Ürünler</h2>
+            </div>
+            <div class="products">
+                <!-- Ürün 1 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="E-Bike Model X">
+                    </div>
+                    <div class="product-info">
+                        <h3>Model X Pro</h3>
+                        <p>Şehir içi kullanım için ideal, hafif ve güçlü e-bike</p>
+                        <div class="product-price">
+                            <span class="price">94.999 TL</span>
+                            <button class="btn">Sepete Ekle</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Ürün. 2 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1571068316344-75bc76f77890?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="E-Bike Model Y">
+                    </div>
+                    <div class="product-info">
+                        <h3>Model Y Ultra</h3>
+                        <p>Uzun yol sürüşleri için tasarlanmış premium e-bike</p>
+                        <div class="product-price">
+                            <span class="price">32.999 TL</span>
+                            <button class="btn">Sepete Ekle</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Ürün 3 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1511994298241-608e28f14fde?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="E-Bike Model Z">
+                    </div>
+                    <div class="product-info">
+                        <h3>Model Z Sport</h3>
+                        <p>Spor kullanıcılar için yüksek performanslı e-bike</p>
+                        <div class="product-price">
+                            <span class="price">28.499 TL</span>
+                            <button class="btn">Sepete Ekle</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Özellikler -->
+    <section class="features" id="ozellikler">
+        <div class="container">
+            <div class="section-title">
+                <h2>Neden Bizim E-Bike'larımız?</h2>
+            </div>
+            <div class="features-container">
+                <!-- Özellik 1 -->
+                <div class="feature-box">
+                    <div class="feature-icon">🚴‍♂️</div>
+                    <h3>Uzun Pil Ömrü</h3>
+                    <p>120 km'ye kadar menzil sunan premium lityum-ion piller ile kesintisiz sürüş keyfi.</p>
+                </div>
+                
+                <!-- Özellik 2 -->
+                <div class="feature-box">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Hızlı Şarj</h3>
+                    <p>Sadece 3 saatte tam şarj ile bekleme süresini minimuma indiriyoruz.</p>
+                </div>
+                
+                <!-- Özellik 3 -->
+                <div class="feature-box">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>2 Yıl Garanti</h3>
+                    <p>Tüm ürünlerimiz 2 yıl garanti kapsamında, güvenle kullanabilirsiniz.</p>
+                </div>
+                
+                <!-- Özellik 4 -->
+                <div class="feature-box">
+                    <div class="feature-icon">🔧</div>
+                    <h3>Ücretsiz Bakım</h3>
+                    <p>İlk yıl içinde 2 kez ücretsiz bakım hizmeti sunuyoruz.</p>
+                </div>
+                
+                <!-- Özellik 5 -->
+                <div class="feature-box">
+                    <div class="feature-icon">🚀</div>
+                    <h3>Yüksek Performans</h3>
+                    <p>45 km/s hıza ulaşabilen güçlü motorlar ile zorlu yollarda bile rahat edin.</p>
+                </div>
+                
+                <!-- Özellik 6 -->
+                <div class="feature-box">
+                    <div class="feature-icon">🌿</div>
+                    <h3>Çevreci</h3>
+                    <p>Sıfır emisyon ile doğaya saygılı, sürdürülebilir ulaşım çözümü.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Yorumlar -->
+    <section class="testimonials" id="yorumlar">
+        <div class="container">
+            <div class="section-title">
+                <h2>Müşteri Yorumları</h2>
+            </div>
+            <div class="testimonial-container">
+                <!-- Yorum 1 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-img">
+                            <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Müşteri 1">
+                        </div>
+                        <div class="testimonial-user">
+                            <h4>Ayşe Kaya</h4>
+                            <p>Model X Pro Kullanıcısı</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-text">
+                        <p>"İşe gidip gelmek için Model X Pro'yu aldım ve kesinlikle hayatımı kolaylaştırdı. Trafik derdi olmadan, keyifle işe gidiyorum. Pil ömrü gerçekten vaat edildiği gibi, bir hafta boyunca şarj etmeden kullanabiliyorum."</p>
+                    </div>
+                </div>
+                
+                <!-- Yorum 2 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-img">
+                            <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Müşteri 2">
+                        </div>
+                        <div class="testimonial-user">
+                            <h4>Mehmet Yılmaz</h4>
+                            <p>Model Y Ultra Kullanıcısı</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-text">
+                        <p>"Hafta sonları uzun turlar yapmayı seviyorum. Model Y Ultra ile 100 km'yi rahatlıkla tamamlayabiliyorum. Konforu ve performansı beni gerçekten şaşırttı. Servis desteği de çok iyi, her sorunda hızlıca çözüm sunuyorlar."</p>
+                    </div>
+                </div>
+                
+                <!-- Yorum 3 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-img">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Müşteri 3">
+                        </div>
+                        <div class="testimonial-user">
+                            <h4>Zeynep Demir</h4>
+                            <p>Model Z Sport Kullanıcısı</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-text">
+                        <p>"Spor amaçlı aldığım Model Z Sport, beklentilerimin çok üzerinde çıktı. Özellikle yokuş çıkışlarındaki performansı mükemmel. Hafif olması da büyük avantaj. E-bike düşünen herkese tavsiye ederim."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- İletişim -->
+    <section class="contact" id="iletisim">
+        <div class="container">
+            <div class="section-title">
+                <h2 style="color: white;">Bize Ulaşın</h2>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>İletişim Bilgileri</h3>
+                    <p><strong>Adres:</strong> 1234 Bisiklet Caddesi, Teknoloji Mahallesi, İstanbul</p>
+                    <p><strong>Telefon:</strong> <a href="tel:+905551234567">+90 555 123 45 67</a></p>
+                    <p><strong>Email:</strong> <a href="mailto:yakupbalakci@gmail.com">yakupbalakci@gmail.com</a></p>
+                    <p><strong>Çalışma Saatleri:</strong> Pazartesi - Cumartesi: 09:00 - 18:00</p>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <input type="text" placeholder="Adınız Soyadınız" required>
+                        <input type="email" placeholder="Email Adresiniz" required>
+                        <input type="tel" placeholder="Telefon Numaranız">
+                        <textarea placeholder="Mesajınız" required></textarea>
+                        <button type="submit" class="btn">Mesaj Gönder</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="logo" style="color: white; margin-bottom: 20px;">
+                    E<span style="color: #e74c3c;">Bike</span>
+                </div>
+                <p style="max-width: 600px; margin-bottom: 30px;">Premium elektrikli bisikletler ile hayatınıza hareket katın. Şehir içi ulaşımınızı kolaylaştıran, çevreci ve ekonomik çözümler sunuyoruz.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link">f</a>
+                    <a href="#" class="social-link">t</a>
+                    <a href="https://www.instagram.com/yakup_balakci" target="_blank" class="social-link">in</a>
+                    <a href="#" class="social-link">y</a>
+                </div>
+                <div class="copyright">
+                    <p>&copy; 2023 Yakup Balakçı. Tüm Hakları Saklıdır.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Form Gönderim İşlemi
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Mesajınız başarıyla gönderildi. En kısa sürede sizinle iletişime geçeceğiz.');
+            this.reset();
+        });
+        
+        // Yumuşak Kaydırma Efekti
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Sepete Ekle Butonları
+        document.querySelectorAll('.product-price .btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const productName = this.closest('.product-card').querySelector('h3').textContent;
+                alert(`${productName} sepete eklendi!`);
+            });
+        });
+        
+        // Header Scroll Efekti
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(44, 62, 80, 0.95)';
+                header.style.padding = '15px 0';
+            } else {
+                header.style.background = '#2c3e50';
+                header.style.padding = '20px 0';
+            }
+        });
+        
+        // Testimonials Kaydırma
+        const testimonialContainer = document.querySelector('.testimonial-container');
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+        
+        testimonialContainer.addEventListener('mousedown', (e) => {
+            isDown = true;
+            startX = e.pageX - testimonialContainer.offsetLeft;
+            scrollLeft = testimonialContainer.scrollLeft;
+        });
+        
+        testimonialContainer.addEventListener('mouseleave', () => {
+            isDown = false;
+        });
+        
+        testimonialContainer.addEventListener('mouseup', () => {
+            isDown = false;
+        });
+        
+        testimonialContainer.addEventListener('mousemove', (e) => {
+            if(!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - testimonialContainer.offsetLeft;
+            const walk = (x - startX) * 2;
+            testimonialContainer.scrollLeft = scrollLeft - walk;
+        });
+    </script>
+</body>
+</html>
